@@ -1,0 +1,150 @@
+/*REMEMBER TO CREATE THE UXEC SCHEMA BEFORE RUN*/
+
+
+
+CREATE TABLE `mpnumber` (
+  `partnum` varchar(50) NOT NULL,
+  `Description` varchar(90) DEFAULT NULL,
+  `Type` varchar(20) DEFAULT NULL,
+  `ScopeAndPurpose` varchar(20) DEFAULT NULL,
+  `PartTypeNomen` char(3) DEFAULT NULL,
+  `Subcontracted` bit(1) DEFAULT NULL,
+  `FinishedGood` bit(1) DEFAULT NULL,
+  `Engineered` bit(1) DEFAULT NULL,
+  `PartCanBeBuilt` int(11) DEFAULT NULL,
+  `Group` varchar(50) DEFAULT NULL,
+  `Class` varchar(50) DEFAULT NULL,
+  `TrackSN` bit(1) DEFAULT NULL,
+  `KittingProdStd` int(11) DEFAULT NULL,
+  `KittingProdStdUnit` varchar(50) DEFAULT NULL,
+  `SetupTime` int(11) DEFAULT NULL,
+  `WaitingOn_ID` int(11) DEFAULT NULL,
+  `woNotifiedDate` varchar(10) DEFAULT NULL,
+  `woassignedtoEmployee` varchar(50) DEFAULT NULL,
+  `wodateassigned` datetime DEFAULT NULL,
+  `wodatedue` datetime DEFAULT NULL,
+  `woNotes` text,
+  `NSNNumber` varchar(120) DEFAULT NULL,
+  `NSNNomenclature` varchar(120) DEFAULT NULL,
+  `CreatedBy` varchar(50) DEFAULT NULL,
+  `ModifiedBy` varchar(50) DEFAULT NULL,
+  `ModifiedOn` datetime DEFAULT NULL,
+  `PurchasingNotes` text,
+  `UOM` varchar(10) DEFAULT NULL,
+  `CustomerFacing` bit(1) DEFAULT NULL,
+  `CustomerDwgRequired` bit(1) DEFAULT NULL,
+  `Length` float DEFAULT NULL,
+  `Width` float DEFAULT NULL,
+  `Height` float DEFAULT NULL,
+  `Weight` float DEFAULT NULL,
+  `CustomerDrawingLink` varchar(150) DEFAULT NULL,
+  `CustomerFacingDescription` char(255) DEFAULT NULL,
+  `ECCNNumber` char(25) DEFAULT NULL,
+  PRIMARY KEY (`partnum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT `uxec`.`MPNumber` (`partnum`, `Description`, `Type`, `ScopeAndPurpose`, `PartTypeNomen`, `Subcontracted`, `FinishedGood`, `Engineered`, `PartCanBeBuilt`, `Group`, `Class`, `TrackSN`, `KittingProdStd`, `KittingProdStdUnit`, `SetupTime`, `WaitingOn_ID`, `woNotifiedDate`, `woassignedtoEmployee`, `wodateassigned`, `wodatedue`, `woNotes`, `NSNNumber`, `NSNNomenclature`, `CreatedBy`, `ModifiedBy`, `ModifiedOn`, `PurchasingNotes`, `UOM`, `CustomerFacing`, `CustomerDwgRequired`, `Length`, `Width`, `Height`, `Weight`, `CustomerDrawingLink`, `CustomerFacingDescription`, `ECCNNumber`)
+
+VALUES ('08-0725-20', 'hardware, base, POD,  Series MS3476, size 22, anodized', NULL, NULL, NULL, 1, 0, 1, 2, NULL, 'HW', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+('08-0725-21', 'Hardware, Lid, POD, Machined, Aluminum, Clear Anodized', NULL, NULL, NULL, 1, 0, 1, 2, NULL, 'HW', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, 'Gary Hamilton', CAST('2013-12-02T00:00:00.000' AS DateTime), '', 'EA', 0, 0, 0, 0, 0, 0, NULL, '', NULL),
+
+('08-0603-25', 'Hardware, Antenna cover, Black Acetal, Smooth Finish', NULL, NULL, NULL, 1, 0, 1, 2, NULL, 'HW', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+('09-0407-01', 'assembly, laser engraving, Pod Lid, PN 08-1224-01, Trim Actuator', NULL, NULL, NULL, 1, 0, 1, 2, NULL, 'HW', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+('09-0407-04', 'assembly, laser engraving, Pod Lid, PN 09-0427-20, Bias Actuator', NULL, NULL, NULL, 1, 0, 1, 2, NULL, 'HW', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+('09-0602-15', 'Wire, Stripped, 22", 22awg, SSW `1,8`', NULL, NULL, NULL, 0, 0, 0, 2, NULL, 'Wire', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+('09-0602-11', 'Wire, Cut,  22", 22 awg shielded', NULL, NULL, NULL, 0, 0, 0, 2, NULL, 'Wire', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+('09-0602-12', 'Wire, Cut,  27", 22 awg shielded', NULL, NULL, NULL, 0, 0, 0, 2, NULL, 'Wire', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+('09-0602-13', 'Wire, Cut,  23", 22 awg shielded', NULL, NULL, NULL, 0, 0, 0, 2, NULL, 'Wire', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+('09-0602-14', 'Wire, Cut,  12", 26 awg twisted shielded', NULL, NULL, NULL, 0, 0, 0, 2, NULL, 'Wire', 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+CREATE TABLE `mprevisions` (
+  `ID_Revision` int(11) NOT NULL AUTO_INCREMENT,
+  `partnum` varchar(50) DEFAULT NULL,
+  `revisionnum` varchar(4) DEFAULT NULL,
+  `Active` bit(1) DEFAULT NULL,
+  `Description` text,
+  `Engineer` varchar(50) DEFAULT NULL,
+  `Date` datetime DEFAULT NULL,
+  `ApprovedEngineering` varchar(50) DEFAULT NULL,
+  `ApprovedManufacturing` varchar(50) DEFAULT NULL,
+  `ApprovedQA` varchar(50) DEFAULT NULL,
+  `ApprovedManagement` varchar(50) DEFAULT NULL,
+  `DateAppvEng` datetime DEFAULT NULL,
+  `DateAppvMfg` datetime DEFAULT NULL,
+  `DateAppvQA` datetime DEFAULT NULL,
+  `DateAppvMgmt` datetime DEFAULT NULL,
+  `TestPlanApproved` bit(1) DEFAULT NULL,
+  `TestPlanExecuted` bit(1) DEFAULT NULL,
+  `OutputDataFolderComplete` bit(1) DEFAULT NULL,
+  `InputDataFolderComplete` bit(1) DEFAULT NULL,
+  `TreeIsComplete` bit(1) DEFAULT NULL,
+  `EpicorUpdated` bit(1) DEFAULT NULL,
+  `EngTestPlanApproved` varchar(50) DEFAULT NULL,
+  `EngTestPlanExecuted` varchar(50) DEFAULT NULL,
+  `EngOutputDataFolderComplete` varchar(50) DEFAULT NULL,
+  `EngInputDataFolderComplete` varchar(50) DEFAULT NULL,
+  `EngTreeIsComplete` varchar(50) DEFAULT NULL,
+  `EngEpicorUpdated` varchar(50) DEFAULT NULL,
+  `DateTestPlanApproved` datetime DEFAULT NULL,
+  `DateTestPlanExecuted` datetime DEFAULT NULL,
+  `DateOutputDataFolderComplete` datetime DEFAULT NULL,
+  `DateInputDataFolderComplete` datetime DEFAULT NULL,
+  `DateTreeIsComplete` datetime DEFAULT NULL,
+  `DateEpicorUpdated` datetime DEFAULT NULL,
+  `OnBuildHold` bit(1) DEFAULT NULL,
+  `MinLotSize` int(11) DEFAULT NULL,
+  `MaxLotSize` int(11) DEFAULT NULL,
+  `Multiple` int(11) DEFAULT NULL,
+  `PartOrderReference` varchar(100) DEFAULT NULL,
+  `LeadTime` int(11) DEFAULT NULL,
+  `DateAppvCS` datetime DEFAULT NULL,
+  `ApprovedCS` varchar(50) DEFAULT NULL,
+  `MasterDrawingLink` varchar(150) DEFAULT NULL,
+  `Unapproved` bit(1) DEFAULT NULL,
+  `Pushed` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`ID_Revision`)
+) ENGINE=InnoDB AUTO_INCREMENT=16105 DEFAULT CHARSET=utf8;
+
+INSERT `uxec`.`MPRevisions` (ID_Revision, partnum, revisionnum, Active, Description, Engineer, Date, ApprovedEngineering, ApprovedManufacturing, ApprovedQA, ApprovedManagement, DateAppvEng, DateAppvMfg, DateAppvQA, DateAppvMgmt, TestPlanApproved, TestPlanExecuted, OutputDataFolderComplete, InputDataFolderComplete, TreeIsComplete, EpicorUpdated, EngTestPlanApproved, EngTestPlanExecuted, EngOutputDataFolderComplete, EngInputDataFolderComplete, EngTreeIsComplete, EngEpicorUpdated, DateTestPlanApproved, DateTestPlanExecuted, DateOutputDataFolderComplete, DateInputDataFolderComplete, DateTreeIsComplete, DateEpicorUpdated, OnBuildHold, MinLotSize, MaxLotSize, Multiple, PartOrderReference, LeadTime, DateAppvCS, ApprovedCS, MasterDrawingLink, Unapproved, Pushed) 
+
+VALUES 
+(9351, '09-0918-50', '0.1', NULL, NULL, 'Rob Cox', CAST('2009-09-18T00:00:00.000' AS DateTime), 'Rob Cox', 'Rob Cox', '', 'Auto Approval', CAST('2009-12-23T00:00:00.000' AS DateTime), CAST('2009-12-23T00:00:00.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), CAST('2009-09-18T00:00:00.000' AS DateTime), 0, 0, 1, 0, 1, 0, NULL, NULL, 'Jeremiah Mount', NULL, 'Jeremiah Mount', NULL, NULL, NULL, CAST('2009-12-01T00:00:00.000' AS DateTime), NULL, CAST('2009-12-01T00:00:00.000' AS DateTime), NULL, 0, 0, 0, 0, NULL, 1, CAST('2009-09-18T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 0),
+
+(7953, '08-0725-20', '0.1', NULL, NULL, 'Chris Lincoln', CAST('2009-06-02T00:00:00.000' AS DateTime), 'Chris Lincoln', 'Chris Lincoln', 'Chris Lincoln', 'Auto Approval', CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T19:00:38.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Chris Lincoln', 'Chris Lincoln', 'Chris Lincoln', 'Chris Lincoln', 'Chris Lincoln', NULL, CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), NULL, 0, 0, 0, 0, ':\08-0725-20\Design Outputs\Rev 0.1\08-0725-20.zip', 14, CAST('1899-12-30T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 0),
+
+(7954, '08-0725-21', '1', 1, '', 'Bob Champion', CAST('2009-06-02T00:00:00.000' AS DateTime), 'Mike Blouin', 'Ofelia Segui', 'Bob Champion', 'Auto Approval', CAST('2015-05-22T15:59:16.000' AS DateTime), CAST('2015-05-21T07:55:17.000' AS DateTime), CAST('2015-05-26T16:04:44.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Chris Lincoln', 'Chris Lincoln', 'Curtis Waguespack', 'Chris Lincoln', 'Ofelia Segui', NULL, CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2015-05-19T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2015-05-21T00:00:00.000' AS DateTime), NULL, 0, 1, 0, 0, ':\08-0725-21\Design Outputs\Rev 1\08-0725-21 Rev 1c.zip', 20, CAST('2015-05-26T15:58:28.000' AS DateTime), 'Gary Hamilton', ':\08-0725-21\Design Outputs\Rev 1\08-0725-21 Rev 1c.pdf', NULL, 0),
+
+(7955, '08-0603-25', '0.1', NULL, NULL, 'Chris Lincoln', CAST('2009-06-02T00:00:00.000' AS DateTime), 'Chris Lincoln', 'Chris Lincoln', 'Chris Lincoln', 'Auto Approval', CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T18:37:10.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Chris Lincoln', 'Chris Lincoln', 'Chris Lincoln', 'Chris Lincoln', 'Chris Lincoln', NULL, CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), CAST('2009-06-02T00:00:00.000' AS DateTime), NULL, 0, 0, 0, 0, NULL, 14, CAST('1899-12-30T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 0),
+
+(7956, '09-0407-01', '1', 1, NULL, 'Jeremiah Mount', CAST('2009-06-03T00:00:00.000' AS DateTime), 'Trafton Creemer', 'Doug Holland', 'DJ Hall', 'Auto Approval', CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2010-05-17T09:26:15.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Jeremiah Mount', 'Jeremiah Mount', 'Jeremiah Mount', 'Jeremiah Mount', 'Jeremiah Mount', NULL, CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), NULL, 0, 0, 0, 0, ':\09-0407-01\Design Outputs\Rev 1\09-0407-01 Rev 1.zip', 10, CAST('1899-12-30T00:00:00.000' AS DateTime), 'Auto Approval', ':\09-0407-01\Design Outputs\Rev 1\09-0407-01 Rev 1.pdf', NULL, NULL),
+
+(7957, '09-0407-04', '0.1', 1, NULL, 'Jeremiah Mount', CAST('2009-06-03T00:00:00.000' AS DateTime), 'Trafton Creemer', 'Doug Holland', 'DJ Hall', 'Auto Approval', CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T14:49:10.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Jeremiah Mount', 'Jeremiah Mount', 'Jeremiah Mount', 'Jeremiah Mount', 'Jeremiah Mount', NULL, CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), CAST('2009-06-03T00:00:00.000' AS DateTime), NULL, 0, 0, 0, 0, ':\09-0407-04\Design Outputs\Rev 0.1\09-0407-04Rev0.1.zip', 0, CAST('1899-12-30T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 0),
+
+(7958, '09-0602-15', '1', 1, '', 'Ben Money', CAST('2009-06-03T00:00:00.000' AS DateTime), 'Trafton Creemer', 'Trafton Creemer', 'Trafton Creemer', 'Auto Approval', CAST('2009-08-10T00:00:00.000' AS DateTime), CAST('2009-08-10T00:00:00.000' AS DateTime), CAST('2009-08-10T10:05:28.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', NULL, CAST('2009-06-10T00:00:00.000' AS DateTime), CAST('2009-06-10T00:00:00.000' AS DateTime), CAST('2009-06-10T00:00:00.000' AS DateTime), CAST('2009-06-10T00:00:00.000' AS DateTime), CAST('2009-06-10T00:00:00.000' AS DateTime), NULL, 0, 0, 100, 0, NULL, 0, CAST('1899-12-30T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 1),
+
+(7959, '09-0602-11', '1', 1, '', 'Ben Money', CAST('2009-06-03T00:00:00.000' AS DateTime), 'Trafton Creemer', 'Trafton Creemer', 'Trafton Creemer', 'Auto Approval', CAST('2009-08-10T00:00:00.000' AS DateTime), CAST('2009-08-10T00:00:00.000' AS DateTime), CAST('2009-08-10T10:04:31.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', NULL, CAST('2009-06-09T00:00:00.000' AS DateTime), CAST('2009-06-09T00:00:00.000' AS DateTime), CAST('2009-06-09T00:00:00.000' AS DateTime), CAST('2009-06-09T00:00:00.000' AS DateTime), CAST('2009-06-09T00:00:00.000' AS DateTime), NULL, 0, 0, 100, 0, NULL, 0, CAST('1899-12-30T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 1),
+
+(7961, '09-0602-13', '1', 1, '', 'Ben Money', CAST('2009-06-03T00:00:00.000' AS DateTime), 'Trafton Creemer', 'Trafton Creemer', 'Trafton Creemer', 'Auto Approval', CAST('2009-08-18T00:00:00.000' AS DateTime), CAST('2009-08-18T00:00:00.000' AS DateTime), CAST('2009-08-18T16:20:57.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', NULL, CAST('2009-06-09T00:00:00.000' AS DateTime), CAST('2009-06-09T00:00:00.000' AS DateTime), CAST('2009-06-09T00:00:00.000' AS DateTime), CAST('2009-06-09T00:00:00.000' AS DateTime), CAST('2009-06-09T00:00:00.000' AS DateTime), NULL, 0, 0, 100, 0, NULL, 0, CAST('1899-12-30T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 1),
+
+(7962, '09-0602-14', '1', 1, '', 'Ben Money', CAST('2009-06-03T00:00:00.000' AS DateTime), 'Trafton Creemer', 'Trafton Creemer', 'Trafton Creemer', 'Auto Approval', CAST('2009-09-15T00:00:00.000' AS DateTime), CAST('2009-09-15T00:00:00.000' AS DateTime), CAST('2009-09-15T16:52:57.000' AS DateTime), CAST('1899-12-30T00:00:00.000' AS DateTime), 1, 1, 1, 1, 1, 0, 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', 'Ernie Tibai', NULL, CAST('2009-07-01T00:00:00.000' AS DateTime), CAST('2009-07-01T00:00:00.000' AS DateTime), CAST('2009-07-01T00:00:00.000' AS DateTime), CAST('2009-07-01T00:00:00.000' AS DateTime), CAST('2009-07-01T00:00:00.000' AS DateTime), NULL, 0, 0, 100, 0, NULL, 0, CAST('1899-12-30T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 0),
+
+(16104, '13-0923-24', '0.1', 1, '', 'Mike Voth', CAST('2013-10-14T00:00:00.000' AS DateTime), 'Mike Voth', 'Mike Voth', 'Mike Voth', 'Auto Approval', CAST('2014-03-13T12:00:33.000' AS DateTime), CAST('2014-03-13T12:00:34.000' AS DateTime), CAST('2014-03-13T12:00:37.000' AS DateTime), CAST('2013-10-14T00:00:00.000' AS DateTime), 0, 0, 1, 0, 1, 0, NULL, NULL, 'Jeremiah Mount', NULL, 'Mike Voth', NULL, NULL, NULL, CAST('2013-10-14T00:00:00.000' AS DateTime), NULL, CAST('2013-10-17T00:00:00.000' AS DateTime), NULL, 0, 0, 0, 0, ':\13-0923-24\Design Outputs\Rev 0.1\13-0923-24 Rev 0.1.pdf', 0, CAST('2014-03-13T12:00:35.000' AS DateTime), 'Mike Voth', ':\13-0923-24\Design Outputs\Rev 0.1\13-0923-24 Rev 0.1.pdf', NULL, 0),
+
+(10874, '10-0210-27', '1', NULL, NULL, 'Curtis Waguespack', CAST('2010-05-07T00:00:00.000' AS DateTime), 'Trafton Creemer', 'Trafton Creemer', 'DJ Hall', 'Auto Approval', CAST('2010-05-07T00:00:00.000' AS DateTime), CAST('2010-05-07T00:00:00.000' AS DateTime), CAST('2010-05-10T10:12:05.000' AS DateTime), CAST('2010-05-07T00:00:00.000' AS DateTime), 0, 0, 1, 0, 1, 0, NULL, NULL, 'Curtis Waguespack', NULL, 'Trafton Creemer', NULL, NULL, NULL, CAST('2010-05-07T00:00:00.000' AS DateTime), NULL, CAST('2010-05-07T00:00:00.000' AS DateTime), NULL, 0, 0, 0, 0, ':\10-0210-27\Design Outputs\Rev 1\10-0210-27 Rev 1.zip', 10, CAST('2010-05-07T00:00:00.000' AS DateTime), 'Auto Approval', NULL, NULL, 0),
+
+(12461, '88-8888-88', '4', NULL, 'Rev copied from: 3', 'Chris Lincoln', CAST('2011-04-12T00:00:00.000' AS DateTime), 'Chris Lincoln', '', '', 'Chris Lincoln', CAST('2011-08-12T13:18:24.000' AS DateTime), CAST('1900-01-01T00:00:00.000' AS DateTime), CAST('1900-01-01T00:00:00.000' AS DateTime), CAST('2011-08-12T13:18:29.000' AS DateTime), 0, 0, 1, 0, 1, 0, NULL, NULL, 'Chris Lincoln', NULL, 'Chris Lincoln', NULL, NULL, NULL, CAST('2011-08-14T00:00:00.000' AS DateTime), NULL, CAST('2011-08-14T00:00:00.000' AS DateTime), NULL, 0, 1, 1, 1, NULL, 0, CAST('2011-08-12T13:18:26.000' AS DateTime), 'Chris Lincoln', NULL, NULL, 0),
+
+(15783, '08-0818-28', '4', NULL, 'Rev copied from: 3 Updated to new publication format and standards.  Revised WP references to new numbering system.', 'Bob Champion', CAST('2013-04-23T00:00:00.000' AS DateTime), 'Trafton Creemer', 'Ofelia Segui', 'Bob Champion', 'Auto Approval', CAST('2013-05-10T14:24:05.000' AS DateTime), CAST('2013-05-10T13:53:26.000' AS DateTime), CAST('2013-05-10T15:15:05.000' AS DateTime), CAST('2013-04-23T00:00:00.000' AS DateTime), 0, 0, 1, 0, 1, 0, NULL, NULL, 'Amy Scherrer', NULL, 'Ofelia Segui', NULL, NULL, NULL, CAST('2013-05-10T00:00:00.000' AS DateTime), NULL, CAST('2013-05-10T00:00:00.000' AS DateTime), NULL, 0, 10, 0, 0, ':\08-0818-28\Design Outputs\Rev 4\08-0818-28 Rev 4 for Print.zip', 10, CAST('2013-05-10T14:37:52.000' AS DateTime), 'Gary Hamilton', ':\08-0818-28\Design Outputs\Rev 4\08-0818-28 Rev 4.pdf', 1, 0);
+
+
+
+
+/*SEE TOP*/
